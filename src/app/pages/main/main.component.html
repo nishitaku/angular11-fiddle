@@ -1,4 +1,4 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="example-container" [class.example-is-mobile]="isHandset$ | async">
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -8,12 +8,12 @@
 
   <mat-sidenav-container
     class="example-sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    [style.marginTop.px]="(isHandset$ | async) ? 56 : 0"
   >
     <mat-sidenav
       #snav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [fixedInViewport]="isHandset$ | async"
       fixedTopGap="56"
     >
       <mat-nav-list>

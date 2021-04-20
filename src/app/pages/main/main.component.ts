@@ -1,5 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -7,10 +9,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  mobileQuery: MediaQueryList;
-
   fillerNav = Array.from({ length: 50 }, (_, i) => `Nav Item ${i + 1}`);
-
   fillerContent = Array.from({ length: 50 }, () =>
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -18,19 +17,12 @@ export class MainComponent implements OnInit {
        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
 
-  private _mobileQueryListener: () => void;
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.XSmall, Breakpoints.Small])
+    .pipe(map(result => result.matches));
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-  }
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
