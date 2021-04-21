@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './pages/main/main.component';
+import { FirstComponent } from './pages/first/first.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', redirectTo: '/first', pathMatch: 'full' },
+  { path: 'first', component: FirstComponent },
 ];
 
 @NgModule({
