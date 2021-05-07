@@ -16,12 +16,7 @@ import { FirstComponent } from './pages/first/first.component';
 import { LogComponent } from './pages/shared/log/log.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    FirstComponent,
-    LogComponent,
-  ],
+  declarations: [AppComponent, MainComponent, FirstComponent, LogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,9 +26,9 @@ import { LogComponent } from './pages/shared/log/log.component';
     MatIconModule,
     MatListModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

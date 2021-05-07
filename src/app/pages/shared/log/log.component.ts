@@ -10,7 +10,7 @@ import { LogService } from 'src/app/services/log/log.service';
 export class LogComponent implements OnInit {
   logs$: Observable<string[]> = this.logService.logs$;
 
-  constructor(private logService: LogService) { }
+  constructor(private logService: LogService) {}
 
   ngOnInit(): void {
     this.logService.add(`LogComponent: ngOnInit`);

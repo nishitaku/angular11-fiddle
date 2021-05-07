@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LogService {
   logs: string[] = [];
   public logsSubject = new BehaviorSubject<string[]>([]);
   public logs$ = this.logsSubject.asObservable();
 
-  constructor() { }
+  constructor() {}
 
   add(log: string) {
     this.logs.push(log);
