@@ -1,10 +1,16 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DoCheck,
+  OnInit,
+} from '@angular/core';
 import { LogService } from 'src/app/services/log/log.service';
 
 @Component({
   selector: 'app-first',
   templateUrl: './first.component.html',
   styleUrls: ['./first.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FirstComponent implements OnInit, DoCheck {
   text?: string;
