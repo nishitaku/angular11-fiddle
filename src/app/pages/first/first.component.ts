@@ -12,16 +12,16 @@ export class FirstComponent implements OnInit, DoCheck {
   constructor(private logService: LogService) {}
 
   ngOnInit(): void {
-    this.logService.add('FirstComponent: ngOnInit');
+    this.logService.add(this, `ngOnInit fired.`);
     this.text = 'start';
   }
 
   ngDoCheck(): void {
-    this.logService.add('FirstComponent: ngDoCheck');
+    this.logService.add(this, `ngDoCheck fired.`);
   }
 
   getBgColor(): string {
-    this.logService.add('FirstComponent: getBgColor');
+    this.logService.add(this, `getBgColor fired.`);
     return 'green';
   }
 

@@ -11,8 +11,8 @@ export class LogService {
 
   constructor() {}
 
-  add(log: string) {
-    this.logs.push(log);
+  add(obj: Object, log: string) {
+    this.logs.push(`${obj.constructor.name}: ${log}`);
     this.logsSubject.next(this.logs);
   }
 

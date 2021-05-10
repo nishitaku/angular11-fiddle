@@ -12,9 +12,7 @@ export class LogComponent implements OnInit {
 
   constructor(private logService: LogService) {}
 
-  ngOnInit(): void {
-    this.logService.add(`LogComponent: ngOnInit`);
-  }
+  ngOnInit(): void {}
 
   onClickClear(): void {
     this.logService.clear();
