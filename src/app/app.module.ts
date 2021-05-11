@@ -15,6 +15,7 @@ import { MainComponent } from './pages/main/main.component';
 import { FirstComponent } from './pages/first/first.component';
 import { LogComponent } from './pages/shared/log/log.component';
 import { SecondComponent } from './pages/second/second.component';
+import { FirstOneComponent } from './pages/first/component/first-one/first-one.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SecondComponent } from './pages/second/second.component';
     FirstComponent,
     LogComponent,
     SecondComponent,
+    FirstOneComponent,
   ],
   imports: [
     BrowserModule,

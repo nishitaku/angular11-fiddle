@@ -1,4 +1,4 @@
-<div>
+<div style="padding: 10px">
   <h2>Logs</h2>
   <button mat-raised-button color="warn" (click)="onClickClear()">Clear</button>
   <div *ngFor="let log of logs$ | async">{{ log }}</div>
