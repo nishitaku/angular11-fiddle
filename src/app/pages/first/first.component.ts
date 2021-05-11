@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { LogService } from 'src/app/services/log/log.service';
+import { Todo } from './models/Todo';
 
 @Component({
   selector: 'app-first',
@@ -14,6 +15,7 @@ import { LogService } from 'src/app/services/log/log.service';
 })
 export class FirstComponent implements OnInit, DoCheck {
   text: string = 'init';
+  todo: Todo = new Todo('object');
 
   constructor(private logService: LogService) {}
 
@@ -32,5 +34,14 @@ export class FirstComponent implements OnInit, DoCheck {
 
   onClickChangeText(): void {
     this.text = 'changed';
+  }
+
+  onClickChangeObjectRef(): void {
+    const todo = new Todo('changed object');
+    this.todo = todo;
+  }
+
+  onClickChangeObjectString(): void {
+    this.todo.title = 'changed title';
   }
 }
