@@ -14,9 +14,16 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { FirstComponent } from './pages/first/first.component';
 import { LogComponent } from './pages/shared/log/log.component';
+import { SecondComponent } from './pages/second/second.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, FirstComponent, LogComponent],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    FirstComponent,
+    LogComponent,
+    SecondComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

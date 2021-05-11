@@ -9,7 +9,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  fillerNav = Array.from({ length: 50 }, (_, i) => `Nav Item ${i + 1}`);
+  navs: { title: string; link: string }[] = [
+    { title: 'First', link: '/first' },
+    { title: 'Second', link: '/second' },
+  ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.XSmall, Breakpoints.Small])
