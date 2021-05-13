@@ -10,6 +10,6 @@ export class Todo {
   }
 
   toString(): string {
-    return `{"title": "${this.title}", "enabled": "${this.enabled}"}`;
+    return JSON.stringify(this);
   }
 }

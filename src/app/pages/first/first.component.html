@@ -1,9 +1,16 @@
 <div class="root">
   <h1 [style.background-color]="getBgColor()">First Component</h1>
   <button (click)="onClickChangeText()">change text</button>
-  <button (click)="onClickChangeObjectRef()">change objectRef</button>
-  <button (click)="onClickChangeObjectString()">change objectString</button>
+  <button (click)="onClickChangeObjectRef()">change object</button>
+  <button (click)="onClickChangeObjectString()">change title</button>
+  <button (click)="onClickUpdateFetchedTodo()">update fetched title</button>
   <p>String: {{ text }}</p>
   <p>Object: {{ todo }}</p>
-  <app-first-one [inputStr]="text" [inputObject]="todo"></app-first-one>
+  <p>Object Title: {{ todo.title }}</p>
+  <p>FetchedObject Title: {{ fetchedTodo.title }}</p>
+  <app-first-one
+    [inputStr]="text"
+    [inputObject]="todo"
+    [inputFetchObject]="fetchedTodo"
+  ></app-first-one>
 </div>
