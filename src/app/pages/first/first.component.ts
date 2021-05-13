@@ -14,7 +14,7 @@ import { Todo } from './models/Todo';
   selector: 'app-first',
   templateUrl: './first.component.html',
   styleUrls: ['./first.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FirstComponent implements OnInit, OnDestroy, DoCheck {
   text: string = 'init';
