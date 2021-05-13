@@ -1,7 +1,19 @@
 <div style="padding: 10px; border: 1px solid">
   <h2>OnPush Strategy Component</h2>
-  <p>inputStr: {{ inputStr }}</p>
-  <p>inputObject: {{ inputObject }}</p>
-  <p>inputObject Title: {{ inputObject.title }}</p>
-  <p>inputFetchObject Title: {{ inputFetchObject.title }}</p>
+  <p>String: {{ text }}</p>
+  <p>Object: {{ todo }}</p>
+  <p>Object Title: {{ todo.title }}</p>
+  <p>FetchedObject Title: {{ fetchedTodo.title }}</p>
+  <app-onpush-strategy
+    [text]="text"
+    [todo]="todo"
+    [fetchedTodo]="fetchedTodo"
+    [logColor]="'magenta'"
+  ></app-onpush-strategy>
+  <app-default-strategy
+    [text]="text"
+    [todo]="todo"
+    [fetchedTodo]="fetchedTodo"
+    [logColor]="'yellow'"
+  ></app-default-strategy>
 </div>

@@ -17,6 +17,8 @@ import { LogComponent } from './pages/shared/log/log.component';
 import { SecondComponent } from './pages/second/second.component';
 import { FirstOneComponent } from './pages/first/components/first-one/first-one.component';
 import { FirstTwoComponent } from './pages/first/components/first-two/first-two.component';
+import { DefaultStrategyComponent } from './pages/shared/default-strategy/default-strategy.component';
+import { OnpushStrategyComponent } from './pages/shared/onpush-strategy/onpush-strategy.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { FirstTwoComponent } from './pages/first/components/first-two/first-two.
     SecondComponent,
     FirstOneComponent,
     FirstTwoComponent,
+    DefaultStrategyComponent,
+    OnpushStrategyComponent,
   ],
   imports: [
     BrowserModule,

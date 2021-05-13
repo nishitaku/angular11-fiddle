@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DoCheck,
   EventEmitter,
@@ -25,12 +26,16 @@ export class FirstComponent implements OnInit, OnDestroy, DoCheck {
 
   constructor(
     private logService: LogService,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private cd: ChangeDetectorRef
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.addLog(`ngOnInit fired.`);
     this.fetchedTodo = await this.todoService.fetchTodo();
+    // OnPush戦略の場合、DOMイベントのみChangeDetectionが走るため
+    // 非同期データ取得後は手動でChangeDetectionを走らせる必要がある
+    this.cd.detectChanges();
   }
 
   ngDoCheck(): void {

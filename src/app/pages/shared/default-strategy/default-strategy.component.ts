@@ -1,5 +1,4 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
-import { ChangeDetectionStrategy } from '@angular/core';
 import {
   Component,
   DoCheck,
@@ -9,18 +8,18 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { LogService } from 'src/app/services/log/log.service';
-import { Todo } from '../../models/Todo';
+import { Todo } from '../../first/models/Todo';
 
 @Component({
-  selector: 'app-first-two',
-  templateUrl: './first-two.component.html',
-  styleUrls: ['./first-two.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-default-strategy',
+  templateUrl: './default-strategy.component.html',
+  styleUrls: ['./default-strategy.component.scss'],
 })
-export class FirstTwoComponent implements OnInit, OnChanges, DoCheck {
+export class DefaultStrategyComponent implements OnInit, OnChanges, DoCheck {
   @Input() text!: string;
   @Input() todo!: Todo;
   @Input() fetchedTodo!: Todo;
+  @Input() logColor?: string;
 
   constructor(private logService: LogService) {}
 
@@ -37,6 +36,6 @@ export class FirstTwoComponent implements OnInit, OnChanges, DoCheck {
   }
 
   private addLog(text: string): void {
-    this.logService.add(this, text, 'tomato');
+    this.logService.add(this, text, this.logColor);
   }
 }

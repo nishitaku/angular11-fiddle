@@ -15,9 +15,9 @@ import { Todo } from '../../models/Todo';
   styleUrls: ['./first-one.component.scss'],
 })
 export class FirstOneComponent implements OnInit, OnChanges, DoCheck {
-  @Input() inputStr!: string;
-  @Input() inputObject!: Todo;
-  @Input() inputFetchObject!: Todo;
+  @Input() text!: string;
+  @Input() todo!: Todo;
+  @Input() fetchedTodo!: Todo;
 
   constructor(private logService: LogService) {}
 
