@@ -4,4 +4,16 @@
   <p>Object: {{ todo }}</p>
   <p>Object Title: {{ todo.title }}</p>
   <p>FetchedObject Title: {{ fetchedTodo.title }}</p>
+  <app-default-strategy
+    [text]="text"
+    [todo]="todo"
+    [fetchedTodo]="fetchedTodo"
+    [logColor]="'slateblue'"
+  ></app-default-strategy>
+  <app-onpush-strategy
+    [text]="text"
+    [todo]="todo"
+    [fetchedTodo]="fetchedTodo"
+    [logColor]="'dodgerblue'"
+  ></app-onpush-strategy>
 </div>

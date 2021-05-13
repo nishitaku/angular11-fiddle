@@ -35,7 +35,7 @@ export class FirstComponent implements OnInit, OnDestroy, DoCheck {
     this.fetchedTodo = await this.todoService.fetchTodo();
     // OnPush戦略の場合、DOMイベントのみChangeDetectionが走るため
     // 非同期データ取得後は手動でChangeDetectionを走らせる必要がある
-    this.cd.detectChanges();
+    this.cd.markForCheck();
   }
 
   ngDoCheck(): void {
