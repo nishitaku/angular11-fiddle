@@ -22,14 +22,18 @@ export class FirstOneComponent implements OnInit, OnChanges, DoCheck {
   constructor(private logService: LogService) {}
 
   ngOnInit(): void {
-    this.logService.add(this, `ngOnInit fired.`);
+    this.addLog(`ngOnInit fired.`);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.logService.add(this, `ngOnChanges fired. ${JSON.stringify(changes)}`);
+    this.addLog(`ngOnChanges fired. ${JSON.stringify(changes)}`);
   }
 
   ngDoCheck(): void {
-    this.logService.add(this, `ngDoCheck fired.`);
+    this.addLog(`ngDoCheck fired.`);
+  }
+
+  private addLog(text: string): void {
+    this.logService.add(this, text, 'cyan');
   }
 }

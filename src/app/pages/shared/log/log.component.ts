@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Log } from 'src/app/services/log/log.interface';
 import { LogService } from 'src/app/services/log/log.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { LogService } from 'src/app/services/log/log.service';
   styleUrls: ['./log.component.scss'],
 })
 export class LogComponent implements OnInit {
-  logs$: Observable<string[]> = this.logService.logs$;
+  logs$: Observable<Log[]> = this.logService.logs$;
 
   constructor(private logService: LogService) {}
 

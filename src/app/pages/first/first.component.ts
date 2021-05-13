@@ -29,12 +29,12 @@ export class FirstComponent implements OnInit, OnDestroy, DoCheck {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.logService.add(this, `ngOnInit fired.`);
+    this.addLog(`ngOnInit fired.`);
     this.fetchedTodo = await this.todoService.fetchTodo();
   }
 
   ngDoCheck(): void {
-    this.logService.add(this, `ngDoCheck fired`);
+    this.addLog(`ngDoCheck fired`);
   }
 
   ngOnDestroy(): void {
@@ -42,7 +42,7 @@ export class FirstComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   getBgColor(): string {
-    // this.logService.add(this, `getBgColor fired.`);
+    // this.addLog(this, `getBgColor fired.`);
     return 'green';
   }
 
@@ -65,5 +65,9 @@ export class FirstComponent implements OnInit, OnDestroy, DoCheck {
     // TodoServiceが保持しているオブジェクトのプロパティを変更する
     // this.fetchedTodoは同じオブジェクトを参照しているため、変更される
     this.todoService.updateFetchedTodoTitle();
+  }
+
+  private addLog(text: string): void {
+    this.logService.add(this, text);
   }
 }
