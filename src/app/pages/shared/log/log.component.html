@@ -1,7 +1,9 @@
 <div style="padding: 10px">
   <h2>Logs</h2>
   <button mat-raised-button color="warn" (click)="onClickClear()">Clear</button>
-  <div *ngFor="let log of logs$ | async" [style.color]="log.color">
-    {{ log.text }}
+  <div class="log-container" #logContainer>
+    <p *ngFor="let log of logs$ | async" [style.color]="log.color">
+      {{ log.text }}
+    </p>
   </div>
 </div>
