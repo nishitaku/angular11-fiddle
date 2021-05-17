@@ -1,4 +1,5 @@
 import {
+  ApplicationRef,
   ChangeDetectorRef,
   Component,
   DoCheck,
@@ -17,12 +18,11 @@ import { LogService } from 'src/app/services/log/log.service';
 export class SecondComponent implements OnInit, DoCheck {
   @ViewChild('rootSvg', { read: ElementRef }) rootSvg!: ElementRef;
 
-  private isMoving = false;
-
   constructor(
     private logService: LogService,
     private ngZone: NgZone,
-    private changeDetectionRef: ChangeDetectorRef
+    private changeDetectionRef: ChangeDetectorRef,
+    private applicationRef: ApplicationRef
   ) {}
 
   ngOnInit(): void {
@@ -38,36 +38,29 @@ export class SecondComponent implements OnInit, DoCheck {
     this.addLog(
       `${this.getMMDDSS()}: onMouseDown fired. p=${this.getPoint(event)}`
     );
-    this.isMoving = true;
     this.ngZone.runOutsideAngular(() => {
       this.rootSvg.nativeElement.addEventListener('mousemove', this.mouseMove);
     });
   }
 
-  onMouseMove(event: MouseEvent): void {
-    this.changeDetectionRef.detectChanges();
-    // if (this.isMoving) {
-    console.log(`onMouseMove`);
-    this.addLog(
-      `${this.getMMDDSS()}: onMouseMove fired. p=${this.getPoint(event)}`
-    );
-    // }
-  }
-
   private mouseMove = (event: MouseEvent) => {
-    // if (this.isMoving) {
-    event?.preventDefault();
     console.log(`onMouseMove`);
     this.addLog(
       `${this.getMMDDSS()}: onMouseMove fired. p=${this.getPoint(event)}`
     );
-    this.changeDetectionRef.detectChanges();
-    // }
+    // runOutsideAngular内のイベントハンドラでChangeDetectionをトリガーしたい場合は、
+    // detectChangesではなくapplicationRef.tickを使う
+    // this.changeDetectionRef.detectChanges();
+    this.applicationRef.tick();
+
+    // あるいは、AngularZoneに戻ってdetectChangesを呼ぶ
+    // this.ngZone.run(() => {
+    //   this.changeDetectionRef.detectChanges();
+    // });
   };
 
   onMouseUp(): void {
     this.addLog(`${this.getMMDDSS()}: onMouseUp fired.`);
-    this.isMoving = false;
     this.rootSvg.nativeElement.removeEventListener('mousemove', this.mouseMove);
   }
 
